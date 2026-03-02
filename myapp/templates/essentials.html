@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home Essentials{% endblock %}
+
+{% block content %}
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background: linear-gradient(to right, #f2f7f4, #dbeee5);
+}
+
+/* GRID */
+.products{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:25px;
+  padding: 20px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+/* CONTENT */
+.card-body{
+  padding:15px;
+  text-align:center;
+}
+
+h3{
+  font-size:18px;
+  margin:10px 0;
+}
+
+select{
+  width:100%;
+  padding:8px;
+  border-radius:5px;
+  border:1px solid #ccc;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+button{
+  width:100%;
+  background:#2f6f5f;
+  color:white;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#214d43;
+}
+</style>
+
+<!-- TOAST MESSAGE -->
+<div id="cart-msg" style="
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #2f6f5f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+"></div>
+
+<h2 style="text-align:center;padding:10px;color:#214d43;font-weight:1000;">
+  Home Essentials
+</h2>
+
+<div class="products">
+
+  <!-- DETERGENT -->
+  <div class="card">
+    <img src="{% static 'images/detergent.png' %}" alt="Detergent">
+    <div class="card-body">
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Detergent Powder</b></h3>
+        <input type="hidden" name="name" value="Detergent Powder">
+        <input type="hidden" name="price" value="180">
+        <select name="weight" required>
+          <option value="">Quantity</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          
+        </select>
+        <div class="price">Rs. 180.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DISH WASH -->
+  <div class="card">
+    <img src="{% static 'images/dish.png' %}" alt="Dish Wash">
+    <div class="card-body">
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Dish Wash Liquid</b></h3>
+        <input type="hidden" name="name" value="Dish Wash Liquid">
+        <input type="hidden" name="price" value="100">
+        <select name="weight" required>
+          <option value="">Quantity</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          
+        </select>
+        <div class="price">Rs. 100.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOOR CLEANER -->
+  <div class="card">
+    <img src="{% static 'images/floor.png' %}" alt="Floor Cleaner">
+    <div class="card-body">
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Floor Cleaner</b></h3>
+        <input type="hidden" name="name" value="Floor Cleaner">
+        <input type="hidden" name="price" value="150">
+        <select name="weight" required>
+          <option value="">Quantity</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          
+        </select>
+        <div class="price">Rs. 150.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOILET CLEANER -->
+  <div class="card">
+    <img src="{% static 'images/cleaner.png' %}" alt="Toilet Cleaner">
+    <div class="card-body">
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Toilet Cleaner</b></h3>
+        <input type="hidden" name="name" value="Toilet Cleaner">
+        <input type="hidden" name="price" value="110">
+       <select name="weight" required>
+          <option value="">Quantity</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          
+        </select>
+        <div class="price">Rs. 110.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll('.add-to-cart-form');
+  const msgBox = document.getElementById('cart-msg');
+
+  forms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const data = new FormData(this);
+
+      fetch("{% url 'add_to_cart' %}", {
+        method: "POST",
+        headers: {
+          'X-CSRFToken': data.get('csrfmiddlewaretoken'),
+          'X-Requested-With': 'XMLHttpRequest'   // 🔥 REQUIRED
+        },
+        body: data
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (msgBox) {
+          msgBox.innerText = result.message + " | ₹" + result.total_price;
+          msgBox.style.display = 'block';
+          msgBox.style.opacity = '1';
+
+          setTimeout(() => {
+            msgBox.style.transition = 'opacity 0.5s';
+            msgBox.style.opacity = '0';
+          }, 2000);
+
+          setTimeout(() => {
+            msgBox.style.display = 'none';
+            msgBox.style.transition = 'none';
+          }, 2500);
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  });
+});
+</script>
+
+{% endblock %}

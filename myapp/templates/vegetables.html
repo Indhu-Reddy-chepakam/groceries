@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Vegetables{% endblock %}
+
+{% block content %}
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#fffaf3;
+  margin:0;
+  background: linear-gradient(to right, rgb(45, 95, 45), rgb(111, 224, 111));
+}
+
+/* GRID */
+.products{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:25px;
+  padding: 20px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  position:relative;
+}
+
+/* IMAGE */
+.card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
+
+/* CONTENT */
+.card-body{
+  padding:15px;
+  text-align:center;
+}
+
+h3{
+  font-size:18px;
+  margin:10px 0;
+}
+
+select{
+  width:100%;
+  padding:8px;
+  border-radius:5px;
+  border:1px solid #ccc;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+button{
+  width:100%;
+  background:#4b3720;
+  color:white;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#2f2416;
+}
+</style>
+
+
+
+
+
+<h2 style="text-align:center;padding:10px;color:darkblue;font-weight:1000;">
+  Fresh Vegetables
+</h2>
+
+<div class="products">
+
+  <!-- TOMATO -->
+  <div class="card">
+    <img src="{% static 'images/tomoto.png' %}" alt="Tomato">
+    <div class="card-body">
+
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Tomatoes</b></h3>
+
+        <input type="hidden" name="name" value="Tomatoes">
+        <input type="hidden" name="price" value="60">
+
+         <select name="weight" required>
+          <option value="">Weight</option>
+          <option value="0.5">0.5kg</option>
+          <option value="1">1kg</option>
+          <option value="2">2kg</option>
+          <option value="3">3kg</option>
+          <option value="4">4kg</option>
+          <option value="5">5kg</option>
+        </select>
+
+        <div class="price">Rs. 60.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- POTATO -->
+  <div class="card">
+    <img src="{% static 'images/potato.png' %}" alt="potato">
+    <div class="card-body">
+
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Potatoes</b></h3>
+
+        <input type="hidden" name="name" value="Potatoes">
+        <input type="hidden" name="price" value="40">
+
+         <select name="weight" required>
+          <option value="">Weight</option>
+          <option value="0.5">0.5kg</option>
+          <option value="1">1kg</option>
+          <option value="2">2kg</option>
+          <option value="3">3kg</option>
+          <option value="4">4kg</option>
+          <option value="5">5kg</option>
+        </select>
+
+        <div class="price">Rs. 40.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ONION -->
+  <div class="card">
+    <img src="{% static 'images/onion.png' %}" alt="onion">
+    <div class="card-body">
+
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Onions</b></h3>
+
+        <input type="hidden" name="name" value="Onions">
+        <input type="hidden" name="price" value="80">
+
+         <select name="weight" required>
+          <option value="">Weight</option>
+          <option value="0.5">0.5kg</option>
+          <option value="1">1kg</option>
+          <option value="2">2kg</option>
+          <option value="3">3kg</option>
+          <option value="4">4kg</option>
+          <option value="5">5kg</option>
+        </select>
+
+        <div class="price">Rs. 80.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- CARROT -->
+  <div class="card">
+    <img src="{% static 'images/carrot.png' %}" alt="carrot">
+    <div class="card-body">
+
+      <form method="POST" class="add-to-cart-form">
+        {% csrf_token %}
+        <h3><b>Carrots</b></h3>
+
+        <input type="hidden" name="name" value="Carrots">
+        <input type="hidden" name="price" value="50">
+<select name="weight" required>
+          <option value="">Weight</option>
+          <option value="0.5">0.5kg</option>
+          <option value="1">1kg</option>
+          <option value="2">2kg</option>
+          <option value="3">3kg</option>
+          <option value="4">4kg</option>
+          <option value="5">5kg</option>
+        </select>
+
+        <div class="price">Rs. 50.00</div>
+        <button type="submit">Add to Cart</button>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div id="cart-msg" style="
+    display:none;
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#4CAF50;
+    color:white;
+    padding:10px 20px;
+    border-radius:5px;
+    z-index:9999;
+"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll('.add-to-cart-form');
+  const msgBox = document.getElementById('cart-msg');
+
+  forms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const data = new FormData(this);
+
+      fetch("{% url 'add_to_cart' %}", {
+        method: "POST",
+        headers: {
+          'X-CSRFToken': data.get('csrfmiddlewaretoken'),
+          'X-Requested-With': 'XMLHttpRequest'   // 🔥 REQUIRED
+        },
+        body: data
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (msgBox) {
+          msgBox.innerText = result.message + " | ₹" + result.total_price;
+          msgBox.style.display = 'block';
+          msgBox.style.opacity = '1';
+
+          setTimeout(() => {
+            msgBox.style.transition = 'opacity 0.5s';
+            msgBox.style.opacity = '0';
+          }, 2000);
+
+          setTimeout(() => {
+            msgBox.style.display = 'none';
+            msgBox.style.transition = 'none';
+          }, 2500);
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    });
+  });
+});
+</script>
+
+
+
+
+{% endblock %}

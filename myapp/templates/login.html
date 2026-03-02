@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, rgb(1, 1, 58), rgb(51, 51, 184));
+}
+
+/* MAIN LOGIN CONTAINER */
+.container-login {
+    display: flex;
+    width: 1000px;
+    max-width: 95%;
+    height: 520px;
+    margin: 50px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* LEFT SIDE */
+.left {
+    flex: 1.5;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.left p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.features {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    border-radius: 15px;
+    padding: 20px;
+    width: 140px;
+    text-align: center;
+}
+
+.card i {
+    color: gold;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.card h3 {
+    margin: 8px 0 5px;
+    font-size: 16px;
+}
+
+.card p {
+    font-size: 12px;
+}
+
+/* RIGHT SIDE */
+.right {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-box input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    padding: 14px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.checkbox {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: darkblue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: green;
+}
+
+/* MESSAGE */
+.message {
+    text-align: center;
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* 🔥 UPDATED FOOTER LINKS COLORS */
+.footer-text {
+    margin-top: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Forgot Password */
+.footer-text a.forgot {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #ffecec;
+    color: #c0392b;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-text a.forgot:hover {
+    background: #c0392b;
+    color: white;
+}
+
+/* Register */
+.footer-text a.register {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-text a.register:hover {
+    background: #2e7d32;
+    color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .container-login {
+        flex-direction: column;
+        height: auto;
+    }
+    .left, .right {
+        padding: 30px;
+    }
+    .features {
+        justify-content: center;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-login">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h1>Welcome to <strong>UNION UNITY !!</strong></h1>
+        <p>Login now to avail best offers!</p>
+
+        <div class="features">
+            <div class="card">
+                <i class="fa fa-star"></i>
+                <h3>Customer-first</h3>
+                <p>Putting you in the center</p>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-star"></i>
+                <h3>Transparent</h3>
+                <p>Honest from the inside out</p>
+            </div>
+
+            <div class="card">
+                <i class="fa fa-star"></i>
+                <h3>Innovative</h3>
+                <p>Getting the absolute best for you</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+
+        {% if messages %}
+          {% for message in messages %}
+            <p class="message">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+
+        <!-- LOGIN FORM -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Enter Username" required>
+                <input type="text" name="phone" placeholder="Enter Phone Number" required>
+                <input type="password" name="password" placeholder="Enter Password" required>
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox"> Remember me
+            </div>
+
+            <button type="submit">Login</button>
+
+            <!-- 🔥 COLORED LINKS -->
+            <div class="footer-text">
+                <a href="#" class="forgot">Forgot Password?</a><br>
+                <a href="{% url 'register' %}" class="register">New User? Register</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Profile Page</h2>
+
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+{% if profile %}
+    <p><strong>Phone:</strong> {{ profile.phone }}</p>
+    <p><strong>Address:</strong> {{ profile.address|default:"Not provided" }}</p>
+{% else %}
+    <p>Profile details not available.</p>
+{% endif %}
+
+{% endblock %}
