@@ -1,17 +1,30 @@
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key')
+
+# =========================
+# SECURITY SETTINGS
+# =========================
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this')
+
+# Use environment variable for DEBUG
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-# Use actual Render URL(s) here
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'groceries.onrender.com').split(',')
+# Render domain
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS',
+    'localhost,127.0.0.1,groceries.onrender.com'
+).split(',')
 
-# Application definition
+
+# =========================
+# APPLICATIONS
+# =========================
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,12 +32,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'myapp',
 ]
 
+
+# =========================
+# MIDDLEWARE
+# =========================
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ✅ must be after SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # MUST be right after SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -33,12 +52,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# =========================
+# URLS & TEMPLATES
+# =========================
+
 ROOT_URLCONF = 'demoproject.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # add template paths if needed
+        'DIRS': [],  # Add template path here if needed
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,7 +76,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'demoproject.wsgi.application'
 
-# Database (SQLite for now)
+
+# =========================
+# DATABASE (SQLite for now)
+# =========================
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -60,7 +88,11 @@ DATABASES = {
     }
 }
 
-# Password validation
+
+# =========================
+# PASSWORD VALIDATION
+# =========================
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -68,17 +100,32 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
+
+# =========================
+# INTERNATIONALIZATION
+# =========================
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+
+# =========================
+# STATIC FILES (IMPORTANT)
+# =========================
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Where collectstatic will collect files
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise storage
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Default primary key
+
+# =========================
+# DEFAULT PRIMARY KEY
+# =========================
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

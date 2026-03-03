@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<!-- ===== CUSTOM STYLES ===== -->
 <style>
   #navbar {
       position: sticky;
@@ -9,144 +10,134 @@
       z-index: 999;
       background: white;
       border-bottom: 1px solid #ddd;
-    }
-  .why-choose {
-  background: #fffaf3;
-  padding: 70px 30px;
-  text-align: center;
-}
-/* Target each card inside #Category */
-#Category .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
-}
-
-/* Hover effect */
-#Category .card:hover {
-  transform: translateY(-8px); /* Lift the card */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-}
-
-.why-choose h2 {
-  font-size: 40px;
-  margin-bottom: 50px;
-  color: #4b341c;
-  font-weight: bold;
-}
-
-.why-cards {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.why-card {
-  background: #389938;
-  color: white;
-  width: 320px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
-}
-
-.why-card:hover {
-  transform: translateY(-8px);
-}
-
-.why-card img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-
-.why-card h3 {
-  font-size: 22px;
-  margin: 20px 15px 10px;
-}
-
-.why-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  padding: 0 18px 25px;
-}
-
-.about-section {
-  background:#0c1445;
-  color: #ffffff;
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.about-section h1 {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.about-section p {
-  font-size: 20px;
-  line-height: 1.8;
-  max-width: 900px;
-  margin: 0 auto 20px;
-}
-
-.features{
-  display: flex;
-  justify-content: center; /* center the cards */
-  gap: 20px; /* smaller gap */
-  padding-top: -5px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background: #fffaf3;
-}
-
-.feature-card{
-  flex: 0 0 150px; /* smaller width */
-  background: #4b341c;
-  color: #fff;
-  border-radius: 14px;
-  height: 120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: 0.3s ease;
-}
-
-.feature-card i{
-  font-size: 28px;
-}
-
-.feature-card p{
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.feature-card:hover{
-  background: #3a2714;
-  transform: translateY(-4px);
-}
-
-@media (max-width: 768px){
-  .features{
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
   }
-}
 
+  .why-choose {
+      background: #fffaf3;
+      padding: 70px 30px;
+      text-align: center;
+  }
 
+  #Category .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
+  #Category .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .why-choose h2 {
+      font-size: 40px;
+      margin-bottom: 50px;
+      color: #4b341c;
+      font-weight: bold;
+  }
+
+  .why-cards {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+
+  .why-card {
+      background: #389938;
+      color: white;
+      width: 320px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+  }
+
+  .why-card:hover {
+      transform: translateY(-8px);
+  }
+
+  .why-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+  }
+
+  .why-card h3 {
+      font-size: 22px;
+      margin: 20px 15px 10px;
+  }
+
+  .why-card p {
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 0 18px 25px;
+  }
+
+  .about-section {
+      background:#0c1445;
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 20px;
+  }
+
+  .about-section h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 30px;
+  }
+
+  .about-section p {
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 0 auto 20px;
+  }
+
+  .features{
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 15px;
+      background: #fffaf3;
+  }
+
+  .feature-card{
+      flex: 0 0 150px;
+      background: #4b341c;
+      color: #fff;
+      border-radius: 14px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.3s ease;
+  }
+
+  .feature-card i{
+      font-size: 28px;
+  }
+
+  .feature-card p{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+  .feature-card:hover{
+      background: #3a2714;
+      transform: translateY(-4px);
+  }
+
+  @media (max-width: 768px){
+      .features{
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+      }
+  }
 
 </style>
-
-
-<!-- ===== NAVBAR ===== -->
-
 
 <!-- ===== CAROUSEL ===== -->
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -156,27 +147,6 @@
     </div>
     <div class="carousel-item">
       <img src="{% static 'images/b.png' %}" class="d-block w-100" style="height:600px;">
-      <!--<div class="carousel-caption text-start" style="padding-bottom:250px;">
-        <h1 style="color:darkblue;font-style: italic;">UNITY <span style="color:green;">UNION</span></h1>
-        <h3 style="font-style:italic;color: black;">Fresh choice United Values</h3>
-       <a href="{% url 'cart' %}"
-   style="
-     display:inline-flex;
-     align-items:center;
-     justify-content:center;
-     width:200px;
-     height:50px;
-     border-radius:30px;
-     background:green;
-     color:white;
-     text-decoration:none;
-     font-weight:600;
-   ">
-   GO TO MY CART
-</a>
-
-        
-      </div>-->
     </div>
   </div>
 
@@ -189,7 +159,6 @@
 </div>
 
 <!-- ===== CATEGORIES ===== -->
-
 <div class="container my-5" id="categories">
   <h2 class="text-center mb-4" style="color: darkblue;">
     Shop by <span class="text-success">Category</span>
@@ -197,27 +166,19 @@
 
   <div class="row g-4 justify-content-center" id="Category">
 
-    <!-- Vegetables -->
-   <div class="col-md-4 col-lg-3">
-  <div class="card h-100 shadow-sm">
-    <img src="{% static 'images/vegetables.png' %}" 
-         class="card-img-top" 
-         style="height:180px; object-fit:cover;">
-
-    <div class="card-body text-center">
-      <h5>Vegetables</h5>
-      <p>Fresh farm vegetables daily.</p>
-
-      <!-- FIXED BUTTON -->
-      <a href="{% url 'vegetables' %}" class="btn btn-success">
-        Explore
-      </a>
+    {% comment %} Vegetables {% endcomment %}
+    <div class="col-md-4 col-lg-3">
+      <div class="card h-100 shadow-sm">
+        <img src="{% static 'images/vegetables.png' %}" class="card-img-top" style="height:180px; object-fit:cover;">
+        <div class="card-body text-center">
+          <h5>Vegetables</h5>
+          <p>Fresh farm vegetables daily.</p>
+          <a href="{% url 'vegetables' %}" class="btn btn-success">Explore</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-
-    <!-- Fruits -->
+    {% comment %} Fruits {% endcomment %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm">
         <img src="{% static 'images/fruits.png' %}" class="card-img-top" style="height:180px;object-fit:cover;">
@@ -229,7 +190,7 @@
       </div>
     </div>
 
-    <!-- Stationery -->
+    {% comment %} Stationery {% endcomment %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm">
         <img src="{% static 'images/stationery.png' %}" class="card-img-top" style="height:180px;object-fit:cover;">
@@ -241,7 +202,7 @@
       </div>
     </div>
 
-    <!-- Groceries -->
+    {% comment %} Groceries {% endcomment %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm">
         <img src="{% static 'images/groceries.png' %}" class="card-img-top" style="height:180px;object-fit:cover;">
@@ -253,7 +214,7 @@
       </div>
     </div>
 
-    <!-- Snacks -->
+    {% comment %} Snacks {% endcomment %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm">
         <img src="{% static 'images/snacks.png' %}" class="card-img-top" style="height:180px;object-fit:cover;">
@@ -265,7 +226,7 @@
       </div>
     </div>
 
-    <!-- Home Essentials -->
+    {% comment %} Home Essentials {% endcomment %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm">
         <img src="{% static 'images/home_essentials.png' %}" class="card-img-top" style="height:180px;object-fit:cover;">
@@ -277,7 +238,7 @@
       </div>
     </div>
 
-    <!-- Home Decor -->
+    {% comment %} Home Decor {% endcomment %}
     <div class="col-md-4 col-lg-3">
       <div class="card h-100 shadow-sm">
         <img src="{% static 'images/home_decor.png' %}" class="card-img-top" style="height:180px;object-fit:cover;">
@@ -292,117 +253,73 @@
   </div>
 </div>
 
+<!-- ===== ABOUT ===== -->
 <section class="about-section" id="about">
   <h1>About Us</h1>
-
-  <p>
-   Welcome to Unity Union! I am part of Unity Union and 
-   I am extremely passionate about unity, collaboration, and creating a strong, supportive community.
-  </p>
-
-  <p>
-    I am committed to making a positive impact on the world through our business.
-  </p>
-
-  <p>
-    😃Thank you for choosing our products!!!
-  </p>
+  <p>Welcome to Unity Union! We are passionate about unity, collaboration, and creating a strong, supportive community.</p>
+  <p>We are committed to making a positive impact on the world through our business.</p>
+  <p>😃 Thank you for choosing our products!!!</p>
 </section>
 
-
-
-  <section class="why-choose">
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="why-choose">
   <h2>Why Choose Us</h2>
-
   <div class="why-cards">
     <div class="why-card">
-      <img src="/static/images/fruits.png" alt="fruits">
+      <img src="{% static 'images/fruits.png' %}" alt="fruits">
       <h3>Naturally Fresh & Juicy</h3>
-<p>
-  Savor the sweetness and freshness of handpicked fruits brought
-  directly from orchards to your home.
-</p>
-
+      <p>Savor the sweetness and freshness of handpicked fruits brought directly from orchards to your home.</p>
     </div>
-
     <div class="why-card">
-      <img src="/static/images/vegetables.png" alt="Farm to Table">
+      <img src="{% static 'images/vegetables.png' %}" alt="Farm to Table">
       <h3>Farm-to-Table Freshness</h3>
-<p>
-  Enjoy crisp, garden-fresh vegetables grown with care and delivered
-  straight from farms to your kitchen.
-</p>
-
+      <p>Enjoy crisp, garden-fresh vegetables grown with care and delivered straight from farms to your kitchen.</p>
     </div>
-
     <div class="why-card">
-      <img src="/static/images/home_essentials.png" alt="essentials">
+      <img src="{% static 'images/home_essentials.png' %}" alt="essentials">
       <h3>Home Essentials Quality</h3>
-      <p>
-        Our home essentials are thoughtfully selected to bring comfort, durability, 
-        and everyday convenience to your home.
-      </p>
+      <p>Our home essentials are thoughtfully selected to bring comfort, durability, and everyday convenience to your home.</p>
     </div>
   </div>
 </section>
+
+<!-- ===== FEATURES ===== -->
 <div class="features">
   <div class="feature-card">
     <i class="fa-solid fa-truck"></i>
     <p>Fast Shipping</p>
   </div>
-
   <div class="feature-card">
     <i class="fa-solid fa-comments"></i>
     <p>Customer Support</p>
   </div>
-
   <div class="feature-card">
     <i class="fa-solid fa-shield-halved"></i>
     <p>Secure Shopping</p>
   </div>
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer style="background:#0c1445; color:#ffffff; padding:50px 20px; font-family:Arial, sans-serif;">
-  
   <div style="max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px;">
-
-    <!-- Brand Section -->
     <div style="flex:1; min-width:250px;">
-
-  <!-- Logo + Title -->
-  <div style="display:flex; align-items:center; margin-bottom:15px;">
-    <img src="/static/images/logo.png" alt="Unity Union Logo"
-         style="width:32px; height:32px; margin-right:10px;">
-    
-    <h2 style="margin:0;">Unity Union</h2>
-  </div>
-
-  <p style="line-height:1.7; font-size:15px;">
-    Unity Union is your trusted grocery store for fresh and quality
-    essentials delivered to your doorstep.
-  </p>
-
-</div>
-
-
-    <!-- Quick Links -->
+      <div style="display:flex; align-items:center; margin-bottom:15px;">
+        <img src="{% static 'images/logo.png' %}" alt="Unity Union Logo" style="width:32px; height:32px; margin-right:10px;">
+        <h2 style="margin:0;">Unity Union</h2>
+      </div>
+      <p style="line-height:1.7; font-size:15px;">
+        Unity Union is your trusted grocery store for fresh and quality essentials delivered to your doorstep.
+      </p>
+    </div>
     <div style="flex:1; min-width:200px;">
       <h4 style="margin-bottom:15px;">Quick Links</h4>
       <ul style="list-style:none; padding:0; line-height:2;">
-        <li>
-          <a href="#" style="color:white; text-decoration:none;">Home</a>
-        </li>
-        <li>
-          <a href="#categories" style="color:white; text-decoration:none;">Categories</a>
-        </li>
-        <li>
-          <a href="{% url 'contact' %}" style="color:white; text-decoration:none;">Contact</a>
-        </li>
+        <li><a href="#" style="color:white; text-decoration:none;">Home</a></li>
+        <li><a href="#categories" style="color:white; text-decoration:none;">Categories</a></li>
+        <li><a href="{% url 'contact' %}" style="color:white; text-decoration:none;">Contact</a></li>
       </ul>
     </div>
-
-    <!-- Contact Info -->
-    <div id="footer-contact" style="flex:1; min-width:220px;">
+    <div style="flex:1; min-width:220px;">
       <h4 style="margin-bottom:15px;">Contact</h4>
       <p style="line-height:1.8;">
         📍 Tada, Tirupati<br>
@@ -410,16 +327,9 @@
         ✉️ <a href="mailto:support@unityunion.com" style="color:white; text-decoration:none;">support@unityunion.com</a>
       </p>
     </div>
-
   </div>
-
-  <!-- Footer Bottom -->
   <div style="border-top:1px solid rgba(255,255,255,0.2); margin-top:40px; padding-top:20px; text-align:center; font-size:14px;">
     <p>© 2025 Unity Union. All Rights Reserved.</p>
   </div>
-
 </footer>
-
-
-
 {% endblock %}
